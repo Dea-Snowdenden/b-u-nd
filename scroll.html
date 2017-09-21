@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Animate Page</title>
+
+<style type="text/css">
+body{
+    background:#E3E3E3;
+}
+div.contentbox{
+    height:800px;
+    margin:20px;
+    font-size:28px;
+    border:1px solid  #ccc  ;
+    background:#fff;
+    
+}
+.top{
+    position:fixed;
+    overflow:none;
+    width:auto;
+    height:50px;
+    border-bottom:1px solid  #ccc  ;
+}
+
+</style>
+
+<script type="text/javascript">
+       
+        var scrollY = 0;
+        var distance = 20;
+        var speed = 10;
+        var lastPos;
+    
+    function autoScrollTo(el){
+        var scrollPos = window.pageYOffset;
+        var targetPos = document.getElementById(el).offsetTop;
+
+    
+       if(scrollPos < targetPos){
+              scrollDown(el);
+       } else {
+              scrollUp(el);
+    }
+}
+    
+    function scrollDown(el){
+        var currentY = window.pageYOffset;
+        var targetY = document.getElementById(el).offsetTop;
+        var animator = setTimeout ('scrollDown(\''+el+'\')', speed);
+        
+         if (currentY < targetY && lastPos != currentY){
+              
+              scrollY = currentY+distance;
+              window.scroll(0, scrollY);
+        
+        } else {
+    
+            clearTimeout(animator);
+            
+            }  
+
+          if(scrollPos > targetPos){
+              scrollUp(el);
+       } else {
+              scrollDown(el);
+    }
+}
+    
+    function scrollUp(el){
+        var currentY = window.pageYOffset;
+        var targetY = document.getElementById(el).offsetTop;
+        var animator = setTimeout ('scrollUp(\''+el+'\')', speed);
+        
+         if (currentY > targetY && lastPos != currentY){
+              
+              scrollY = currentY-distance;
+              window.scroll(0, scrollY);
+        
+        } else {
+    
+            clearTimeout(animator);
+        
+        }  
+      
+          if(scrollPos > targetPos){
+              scrollUp(el);
+       } else {
+              scrollDown(el);
+    }
+}
+    
+    function back(el){
+        var currentY = window.pageYOffset;
+        var targetY = document.getElementById(el).offsetTop;
+        var animator = setTimeout ('back(\''+el+'\')', speed);
+        
+         if (currentY > targetY && lastPos != currentY){
+              
+              scrollY = currentY-distance;
+              window.scroll(0, scrollY);
+        
+        } else {
+    
+            clearTimeout(animator);
+        
+        }  
+        
+}
+</script>
+
+</head>
+<body>
+<div class="top">
+<h2 id="myheading">CLICK YOUR LINK</h2>
+ 
+<a href="#" onclick="return false;" onmousedown="autoScrollTo('divA');">Doc 1</a>
+<a href="#" onclick="return false;" onmousedown="autoScrollTo('divB');">Doc 2</a>
+<a href="#" onclick="return false;" onmousedown="autoScrollTo('divC');">Doc 3</a>
+<a href="#" onclick="return false;" onmousedown="autoScrollTo('divD');">Doc 4</a>
+<a href="#" onclick="return false;" onmousedown="autoScrollTo('divE');">Doc 5</a>
+<a href="#" onclick="return false;" onmousedown="autoScrollTo('divF');">Doc 6</a>
+<a href="#" onclick="return false;" onmousedown="autoScrollTo('divG');">Doc 7</a>
+<a href="#" onclick="return false;" onmousedown="autoScrollTo('divH');">Doc 8</a>&nbsp;&nbsp;&nbsp;
+<a href="#" onclick="return false;" onmousedown="back('myheading');">Go Back</a>
+</div><br /><br /><br /><br /><br />
+
+<div name="divA" id="divA" class="contentbox">Div 1</div>
+
+
+<div name="divB" id="divB" class="contentbox">Div 2</div>
+
+
+<div name="divC" id="divC" class="contentbox">Div 3</div>
+
+
+<div name="divD" id="divD" class="contentbox">Div 4</div>
+
+
+<div name="divE" id="divE" class="contentbox">Div 5</div>
+
+
+<div name="divF" id="divF" class="contentbox">Div 6</div>
+
+
+<div name="divG" id="divG" class="contentbox">Div 7</div>
+
+
+<div name="divH" id="divH" class="contentbox">Div 8</div>
+
+
+<div name="end" id="bottom" class="contentbox">THE END</div>
+<br /><br /><br /><br /><br />
+
+</body>
+</html>﻿

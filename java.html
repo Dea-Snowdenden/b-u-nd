@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CSS Animations Generator</title>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500' rel='stylesheet' type='text/css'>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.reveal.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="js/jquery.navgoco.min.js"></script>
+<link rel="icon" href="fevicon.ico" sizes="32x32" type="image/x-icon">
+<script>
+  function testAnim(x) {
+   $('#animationSandbox').removeClass().addClass(x + ' animated ').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+      $(this).removeClass();
+    });
+  };
+
+  $(document).ready(function(){
+    $('#animation li a').click(function(e){ 
+		//console.log($(this).html());
+		$('#animation li a').removeClass("active");
+		$(this).addClass("active");
+		 e.preventDefault();
+		  var anim = $(this).text();
+		 testAnim(anim);
+		 $('.preview').attr('lang',anim);
+		 var lang = 'code-'+anim;
+		 $('.code_btn').attr('lang',lang);
+		});
+
+		$('.preview').click(function(e){
+		  var anim = $(this).attr('lang');
+		  testAnim(anim);
+		});
+  });
+	
+	function show_popup(element)
+	{
+		$("#CODE").text(" ");
+		var class_name = $(element).attr('lang');
+		var css = $('.'+class_name).text();
+		$("#CODE").html(css);
+		$('#myModal').reveal('open');
+	}
+</script>
+</head>
+<body>
+
+<li><a href="javascript:;">zoomIn</a></li>
+.zoomIn {
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes zoomIn {
+  0% {
+  opacity: 0;
+  -webkit-transform: scale3d(.3, .3, .3);
+  transform: scale3d(.3, .3, .3);
+  }
+  50% {
+  opacity: 1;
+  }
+  }
+  @keyframes zoomIn {
+  0% {
+  opacity: 0;
+  -webkit-transform: scale3d(.3, .3, .3);
+  transform: scale3d(.3, .3, .3);
+  }
+  50% {
+  opacity: 1;
+  }
+  } 
+×
